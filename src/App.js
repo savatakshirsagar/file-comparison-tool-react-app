@@ -10,7 +10,15 @@ const App = () => {
       <h1 className='main-heading'>File Comparison Tool</h1>
       <FileUpload onSubmit={uploadFiles} />
       {loading && <p>Comparing files...</p>}
-      {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
+      {result && (
+        <div className='result'>
+          {result.error ? (
+            <p className='error-message'>{result.error}</p>
+          ) : (
+            <pre>{JSON.stringify(result, null, 2)}</pre>
+          )}
+        </div>
+      )}
     </div>
   );
 };
